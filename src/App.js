@@ -1,15 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 import { render } from "react-dom";
+import { Router, Link } from '@reach/router';
 
-import Pet from "./Pet";
+import Results from './Results';
+import Details from './Details';
 
-const App = () => (
-  <div>
-    <h1>Adopt me!</h1>
-    <Pet name='Azor' animal='dog' breed="mixed"/>
-    <Pet name='Chester' animal='cat' breed="mixed"/>
-    <Pet name='Ćwirek' animal='bird' breed="mixed"/>
-  </div>
-);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <header>
+          <Link to='/'>Adopt me!</Link>
+        </header>
+        <Router>
+          <Results path="/"/>
+          <Details path="/details/:id"/>
+        </Router>
+      </div>
+    );
+  }
+}
 
 render(<App />, document.getElementById("root"));
